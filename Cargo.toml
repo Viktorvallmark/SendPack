@@ -1,0 +1,15 @@
+[package]
+name = "send_pack_project"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = "0.6.20"
+serde = "1.0.190"
+uuid = { version = "1.5.0", features = ["v4", "fast-rng"] }
+tokio = { version = "1.0.0", features = ["rt", "rt-multi-thread", "macros"] }
+tracing = "0.1.40"
+tracing-subscriber = "0.3.17"
+serde_json = "1.0.107"
