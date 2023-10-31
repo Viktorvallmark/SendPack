@@ -1,4 +1,5 @@
 mod user;
+mod error;
 
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use serde;
