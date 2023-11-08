@@ -49,3 +49,11 @@ async fn delete_tickets(State(controller): State<ModelController>, Path(id): Pat
 
 
 //-- Handling REST calls
+
+async fn update_tickets(State(controller): State<ModelController>, Path(id): Path<u64>) -> Result<Json<Ticket>> {
+
+    println!("->> {:<12} - update_tickets ", "HANDLER");
+
+    let ticket: Ticket = controller.
+
+}

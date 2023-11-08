@@ -14,6 +14,8 @@ pub enum Error {
 
     //Model errors
     DeleteTicketIdNotFound {id: u64},
+    ReplaceTicketErrorIdNotFound {id: u64},
+    UpdateTicketErrorIdNotFound {id: u64},
 }
 
 //So that custom error is displayed in a nice way

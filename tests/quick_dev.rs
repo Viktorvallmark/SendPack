@@ -41,5 +41,16 @@ async fn quick_dev() -> Result<()>{
 
     ticket_list.await?.print().await?;
 
+    let ticket_replace = httpc.do_post(
+        "/api/tickets",
+        json!({
+            "title": "Ticket AAA"
+        })
+    );
+
+    ticket_replace.await?.print().await?;
+
+
+
     Ok(())
 }

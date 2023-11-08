@@ -1,5 +1,6 @@
 use crate::error::{Error, Result};
 use std::sync::{Arc, Mutex};
+use axum::body::HttpBody;
 use serde::{Serialize, Deserialize};
 
 
@@ -68,6 +69,26 @@ impl ModelController {
 
         ticket_delete.ok_or(Error::DeleteTicketIdNotFound {id})
 
+    }
+
+    pub async fn replace_ticket(&self, id: u64, replace: CreateTicket) -> Result<Ticket> {
+
+        let mut ticket_store = self.store_ticket.lock().unwrap();
+
+        let new_ticket = self.create_ticket(replace);
+
+        let ticket_replace = ticket_store.get_mut(id as usize).and_then(|t| t.replace(new_ticket));
+
+        ticket_replace.ok_or(Error::ReplaceTicketErrorIdNotFound {id})
+    }
+
+    pub async fn update_ticket(&self, id: u64, update: CreateTicket) -> Result<Ticket> {
+
+        let mut ticket_store = self.store_ticket.lock().unwrap();
+
+        let ticket_update = ticket_store.get_mut(id as usize).and_then();
+
+        todo!()
     }
 }
 
